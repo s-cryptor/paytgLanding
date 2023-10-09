@@ -1,26 +1,17 @@
 <script lang="ts" setup>
 import { AppConfigInput } from '@nuxt/schema'
-import { useOrder } from '~/stores/order'
 
 export interface IMenuItem {
   type: 'link' | 'button'
   text: string
   href?: any
   route?: any
-  badge?: boolean
 }
 
-const orderStore = useOrder()
 const app = useAppConfig() as AppConfigInput
 
-const newOrders = computed(() => orderStore.orders.filter((order) => order.status === 'NEW'))
 const menus = computed((): IMenuItem[] => [
-  { type: 'link', text: 'Заказы', route: { name: 'orders' }, badge: newOrders.value.length > 0 },
-  { type: 'link', text: 'Товары', route: { name: 'products' } },
-  { type: 'link', text: 'Категории', route: { name: 'categories' } },
-  { type: 'link', text: 'Топпинги', route: { name: 'toppings' } },
-  { type: 'link', text: 'История заказов', route: { name: 'history' } },
-  { type: 'link', text: 'Посетители', route: { name: 'users' } },
+  { type: 'link', text: 'Заказы', route: { name: 'index' } },
 ])
 </script>
 
@@ -50,12 +41,11 @@ const menus = computed((): IMenuItem[] => [
                 :to="item.route ? item.route : undefined"
                 :href="item.href ? item.href : undefined"
               />
-              <div v-if="item.badge" class="inline-block w-1 h-1 bg-red ml-2 mb-2"></div>
             </li>
           </ul>
         </nav>
         <div class="flex space-x-4 border-l ml-6 pl-6 border-gray-900/10 dark:border-gray-50/[0.2]">
-          <!-- <LanguageSwitcher /> -->
+          <LanguageSwitcher />
           <ThemeSwitcher />
         </div>
       </div>

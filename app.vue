@@ -4,11 +4,6 @@ import { NConfigProvider, darkTheme, NNotificationProvider, NDialogProvider } fr
 import { AppSetup } from './utils/app'
 import { ITheme } from './utils/theme'
 import { themeOverrides } from './utils/naive-theme-override'
-import { useProduct } from './stores/product'
-import { useCategory } from './stores/category'
-import { useTopping } from './stores/topping'
-import { useOrder } from './stores/order'
-import { useShared } from './stores/shared'
 import Notification from '~/components/Notification.vue'
 
 AppSetup()
@@ -16,39 +11,7 @@ const theme = useState<ITheme>('theme.current')
 const locale = useState<string>('locale.setting')
 const notification = ref<InstanceType<typeof Notification> | null>(null)
 const app = useAppConfig() as AppConfigInput
-const productStore = useProduct()
-const categoryStore = useCategory()
-const toppingStore = useTopping()
-const orderStore = useOrder()
-const sharedStore = useShared()
 const route = useRoute()
-
-onMounted(async () => {
-  if (route.name === 'login') {
-    return
-  }
-
-  try {
-    sharedStore.isLoading = true
-    const result = await Promise.allSettled([
-      productStore.getProducts(),
-      categoryStore.getCategories(),
-      toppingStore.getToppings(),
-      orderStore.getOrders(),
-    ])
-
-    if (result.some((req) => req.status === 'rejected')) {
-      throw new Error('Не удалось загрузить данные')
-    }
-  } catch {
-    notification.value?.notification.error({
-      content: 'Не удалось загрузить данные',
-      duration: 5000,
-    })
-  } finally {
-    sharedStore.isLoading = false
-  }
-})
 
 useHead({
   titleTemplate: 'Paytg %s',
