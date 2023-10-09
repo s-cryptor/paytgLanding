@@ -1,0 +1,9 @@
+pages:
+  index:
+    title: paytg
+    get_started: Начать
+  404:
+    title: страница не найдена
+  app:
+    nav: приложение
+    title: приложение

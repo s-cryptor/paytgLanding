@@ -1,0 +1,9 @@
+pages:
+  index:
+    title: paytg
+    get_started: Get started
+  404:
+    title: page not found
+  app:
+    nav: app
+    title: app

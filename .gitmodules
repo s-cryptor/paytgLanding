@@ -1,0 +1,3 @@
+[submodule "paytgTypes"]
+	path = paytgTypes
+	url = https://github.com/s-cryptor/paytgTypes.git
