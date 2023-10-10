@@ -42,6 +42,9 @@ export default defineNuxtConfig({
 
   // vite plugins
   vite: {
+    ssr: {
+      noExternal: ['naive-ui', 'vueuc'],
+    },
     plugins: [
       UnpluginComponentsVite({
         dts: true,
