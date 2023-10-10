@@ -8,11 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'IconFaSolid:ellipsisV': typeof import('~icons/fa-solid/ellipsis-v')['default']
-    'IconLa:language': typeof import('~icons/la/language')['default']
     'IconLa:telegram': typeof import('~icons/la/telegram')['default']
-    'IconMaterialSymbols:contentCopyOutline': typeof import('~icons/material-symbols/content-copy-outline')['default']
-    'IconMaterialSymbols:deleteOutline': typeof import('~icons/material-symbols/delete-outline')['default']
-    'IconMaterialSymbols:editOutline': typeof import('~icons/material-symbols/edit-outline')['default']
     'IconUil:bars': typeof import('~icons/uil/bars')['default']
     'IconUil:clock': typeof import('~icons/uil/clock')['default']
     'IconUil:laptop': typeof import('~icons/uil/laptop')['default']
