@@ -34,7 +34,7 @@ const leadingsText = computed(() => [
     </div>
     <PageBody class="flex-1 flex">
       <PageSection class="flex-1 flex items-center">
-        <div class="flex-1 md:w-5/8 flex flex-col z-10">
+        <div class="flex-1 md:w-1/2 flex flex-col z-10">
           <h1 class="text-center md:text-left mt-4">
             <span
               v-for="(item, i) in leadingsText"
@@ -50,8 +50,11 @@ const leadingsText = computed(() => [
           <div class="text-5xl">БЫСТРАЯ ОПЛАТА В ТЕЛЕГРАМЕ</div>
           <div class="text-5xl">ДЛЯ ВАШЕГО БИЗНЕСА</div>
           <div class="flex space-x-4 ml-4 mt-10 justify-center md:justify-start">
-            <Button size="lg" text="Начать" class="font-extrabold" to="orders" />
+            <Button size="lg" text="Начать" class="font-extrabold" to="/" />
           </div>
+        </div>
+        <div class="flex justify-center">
+          <img src="~/assets/images/preview.png" alt="" width="350" />
         </div>
       </PageSection>
     </PageBody>
