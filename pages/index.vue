@@ -1,60 +1,61 @@
 <script lang="ts" setup>
-// composable
-const { t } = useLang()
-
+import { NAlert } from 'naive-ui'
 // meta
 definePageMeta({
   layout: 'page',
 })
-
-// vars
-const leadingsText = computed(() => [
-  {
-    text: 'paytg',
-    startColor: '#007CF0',
-    endColor: '#00DFD8',
-    delay: 0,
-  },
-])
 </script>
 
 <template>
   <PageWrapper class="flex-1 flex">
-    <div class="background-overlay">
-      <div
-        class="absolute top-0 left-0 transform translate-x-64 translate-y-4 h-14 w-14 rounded-full bg-gray-900 dark:bg-white"
-      ></div>
-      <div
-        class="absolute hidden md:block top-0 left-0 transform translate-x-18 translate-y-20 h-28 w-28 rounded-full bg-blue-600 linear-wipe"
-      ></div>
-      <div
-        class="absolute hidden md:block bottom-0 right-0 transform -translate-x-4 -translate-y-40 h-16 w-16 rounded bg-purple-600 linear-wipe"
-      ></div>
-      <div class="absolute bottom-0 right-0 triangle-shape"></div>
-    </div>
-    <PageBody class="flex-1 flex">
-      <PageSection class="flex-1 flex items-center">
+    <PageBody class="flex-1 flex flex-col">
+      <PageSection class="flex-1 flex items-center relative">
+        <div class="background-overlay">
+          <div
+            class="absolute top-0 left-0 transform translate-x-64 translate-y-4 h-14 w-14 rounded-full bg-gray-900 dark:bg-white"
+          ></div>
+          <div
+            class="absolute hidden md:block top-0 left-0 transform translate-x-18 translate-y-20 h-28 w-28 rounded-full bg-blue-600 linear-wipe"
+          ></div>
+          <div
+            class="absolute hidden md:block bottom-0 right-0 transform -translate-x-4 -translate-y-20 h-16 w-16 rounded bg-purple-600 linear-wipe"
+          ></div>
+          <div class="absolute bottom-0 right-0 triangle-shape"></div>
+        </div>
         <div class="flex-1 md:w-1/2 flex flex-col z-10">
           <h1 class="text-center md:text-left mt-4">
             <span
-              v-for="(item, i) in leadingsText"
-              :key="i"
-              :style="`--content: '${item.text}'; --start-color: ${item.startColor}; --end-color: ${
-                item.endColor
-              }; --animation-name: anim-fg-${i + 1}`"
+              style="
+                --content: 'paytg';
+                --start-color: #007cf0;
+                --end-color: #00dfd8;
+                --animation-name: anim-fg-1;
+              "
               class="animated-text-bg drop-shadow-xl text-5xl xl:text-8xl 2xl:text-9xl block font-black uppercase"
             >
-              <span class="animated-text-fg">{{ item.text }}</span>
+              <span class="animated-text-fg">paytg</span>
             </span>
           </h1>
           <div class="text-5xl">БЫСТРАЯ ОПЛАТА В ТЕЛЕГРАМЕ</div>
           <div class="text-5xl">ДЛЯ ВАШЕГО БИЗНЕСА</div>
           <div class="flex space-x-4 ml-4 mt-10 justify-center md:justify-start">
-            <Button size="lg" text="Начать" class="font-extrabold" to="/" />
+            <Button size="lg" text="Подключить" class="font-extrabold" to="/" />
           </div>
         </div>
         <div class="flex justify-center">
           <img src="~/assets/images/preview.png" alt="" width="350" />
+        </div>
+      </PageSection>
+
+      <PageSection class="mt-20 flex-1 flex items-center">
+        <div class="flex-1 flex">
+          <NAlert type="info" title="Paytg" class="w-full">
+            <div class="text-base w-2/3">
+              Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ
+              самостоятельно, без участия персонала. Он открывается по QR-коду, расположенному за
+              столиком, и работает как касса-самообслуживания.
+            </div>
+          </NAlert>
         </div>
       </PageSection>
     </PageBody>
@@ -163,44 +164,6 @@ html.dark {
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-bottom: 40px solid theme('colors.green.600');
-  transform: translate(-15rem, -6rem) rotate(45deg);
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 140px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -75px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip .tooltiptext::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+  transform: translate(-15rem, 0rem) rotate(45deg);
 }
 </style>
