@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NAlert } from 'naive-ui'
+import { NAlert, NTimeline, NTimelineItem, NGradientText, NList, NListItem } from 'naive-ui'
 // meta
 definePageMeta({
   layout: 'page',
@@ -53,11 +53,82 @@ definePageMeta({
             <div class="text-base w-2/3">
               Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ
               самостоятельно, без участия персонала. Он открывается по QR-коду, расположенному за
-              столиком, и работает как касса-самообслуживания.
+              столиком, и работает как касса самообслуживания.
             </div>
           </NAlert>
         </div>
       </PageSection>
+
+      <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
+        <h1 class="text-3xl font-bold">Как это работает?</h1>
+        <NTimeline vertical size="large" class="mt-5">
+          <NTimelineItem
+            type="success"
+            title="Гость сканирует QR-код и попадает в телеграм-бота"
+            content="А при следующем визите бот уже будет у гостя в телеграме"
+          />
+          <NTimelineItem
+            type="success"
+            title="Гость выбирает понравившиеся позиции и оплачивает заказ"
+            content="Меню представленно в привычном виде с описанием и возможностью кастомизировать каждую позицию, выбрав необходимый объем и добавки"
+          />
+          <NTimelineItem
+            type="success"
+            title="Заказ попадает на кухню"
+            content="Как только заказ начнут готовить, гость получается уведомление"
+          />
+          <NTimelineItem
+            type="success"
+            title="Гость получает увдомление о готовности"
+            content="Гость может сам забрать заказ, либо получить его за свой столик"
+          />
+        </NTimeline>
+      </PageSection>
+
+      <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
+        <h1 class="text-3xl font-bold">
+          Почему
+          <NGradientText class="font-bold" type="info">Paytg</NGradientText>
+          и в чем выгода?
+        </h1>
+        <div class="flex-1 flex flex-col mt-5 text-base gap-4">
+          <div class="flex-1 flex items-center">
+            <IconIc:baseline-telegram width="64" height="64" class="flex-shrink-0 mr-3" />
+            <span>
+              Не нужно разрабатывать приложение для вашего бизнеса, а гостям не нужно скачивать
+              очередное приложение, ведь телеграм есть у каждого и стал самым популярным приложением
+              в РФ
+            </span>
+          </div>
+          <div class="flex-1 flex items-center">
+            <IconFa6Solid:money-bill-trend-up width="64" height="64" class="flex-shrink-0 mr-3" />
+            <span>
+              Внедрение приложения в ресторанный бизнес в среднем увеличивает доход на 25%
+            </span>
+          </div>
+          <div class="flex-1 flex items-center">
+            <IconMaterialSymbols:mail width="64" height="64" class="flex-shrink-0 mr-3" />
+            <span>Возможность делать рассылку о новых позициях или акциях</span>
+          </div>
+          <div class="flex-1 flex items-center">
+            <IconMdi:food width="64" height="64" class="flex-shrink-0 mr-3" />
+            <span>
+              Гости видят аппетитные фото ваших блюд, могут не торопясь изучить меню и прочитать
+              описание
+            </span>
+          </div>
+          <div class="flex-1 flex items-center">
+            <IconIon:time width="64" height="64" class="flex-shrink-0 mr-3" />
+            <span>Экономия времени персонала</span>
+          </div>
+          <div class="flex-1 flex items-center">
+            <IconIconParkSolid:good-two width="64" height="64" class="flex-shrink-0 mr-3" />
+            <span>Уменьшение очередей и ошибок в заказах</span>
+          </div>
+        </div>
+      </PageSection>
+
+      <PageSection class="mt-20 flex-1 flex items-center"></PageSection>
     </PageBody>
   </PageWrapper>
 </template>
@@ -165,5 +236,14 @@ html.dark {
   border-right: 25px solid transparent;
   border-bottom: 40px solid theme('colors.green.600');
   transform: translate(-15rem, 0rem) rotate(45deg);
+}
+
+.n-timeline .n-timeline-item .n-timeline-item-content .n-timeline-item-content__title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.n-timeline .n-timeline-item .n-timeline-item-content .n-timeline-item-content__content {
+  font-size: 16px;
 }
 </style>
