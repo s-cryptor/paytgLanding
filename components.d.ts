@@ -7,8 +7,14 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    'IconFa6Solid:moneyBillTrendUp': typeof import('~icons/fa6-solid/money-bill-trend-up')['default']
     'IconFaSolid:ellipsisV': typeof import('~icons/fa-solid/ellipsis-v')['default']
+    'IconIc:baselineTelegram': typeof import('~icons/ic/baseline-telegram')['default']
+    'IconIconParkSolid:goodTwo': typeof import('~icons/icon-park-solid/good-two')['default']
+    'IconIon:time': typeof import('~icons/ion/time')['default']
     'IconLa:telegram': typeof import('~icons/la/telegram')['default']
+    'IconMaterialSymbols:mail': typeof import('~icons/material-symbols/mail')['default']
+    'IconMdi:food': typeof import('~icons/mdi/food')['default']
     'IconUil:bars': typeof import('~icons/uil/bars')['default']
     'IconUil:clock': typeof import('~icons/uil/clock')['default']
     'IconUil:laptop': typeof import('~icons/uil/laptop')['default']
