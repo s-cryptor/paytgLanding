@@ -14,13 +14,14 @@ const app = useAppConfig() as AppConfigInput
 const route = useRoute()
 
 useHead({
-  titleTemplate: 'Paytg %s',
+  title: 'Paytg - Быстрая оплата в телеграм для вашего бизнеса',
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     {
       hid: 'description',
       name: 'description',
-      content: 'Paytg',
+      content:
+        'Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ самостоятельно, без участия персонала. Также это великолепный инструмент для рассылки.',
     },
   ],
   link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
