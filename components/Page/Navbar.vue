@@ -85,10 +85,10 @@ const menus = computed((): IMenuItem[] => [
               </li>
             </ul>
           </nav>
-          <div class="mt-6 text-sm font-bold capitalize">изменить тему</div>
-          <div class="mt-2">
+          <!-- <div class="mt-6 text-sm font-bold capitalize">изменить тему</div> -->
+          <!-- <div class="mt-2">
             <ThemeSwitcher type="select-box" />
-          </div>
+          </div> -->
         </ActionSheetBody>
         <Button text="Close" type="secondary" @click.prevent="toggleOptions(false)" />
       </ActionSheet>
