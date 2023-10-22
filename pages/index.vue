@@ -13,7 +13,7 @@ definePageMeta({
   <div>
     <PageWrapper class="flex-1 flex">
       <PageBody class="flex-1 flex flex-col">
-        <PageSection class="flex-1 flex items-center relative">
+        <PageSection class="flex-1 flex items-center flex-col md:flex-row relative">
           <div class="background-overlay">
             <div
               class="absolute top-0 left-0 transform translate-x-64 translate-y-4 h-14 w-14 rounded-full bg-gray-900 dark:bg-white"
@@ -40,13 +40,13 @@ definePageMeta({
                 <span class="animated-text-fg">paytg</span>
               </span>
             </h1>
-            <div class="text-5xl">БЫСТРАЯ ОПЛАТА В ТЕЛЕГРАМЕ</div>
-            <div class="text-5xl">ДЛЯ ВАШЕГО БИЗНЕСА</div>
+            <div class="text-base md:text-5xl">БЫСТРАЯ ОПЛАТА В ТЕЛЕГРАМЕ</div>
+            <div class="text-base md:text-5xl">ДЛЯ ВАШЕГО БИЗНЕСА</div>
             <div class="flex space-x-4 ml-4 mt-10 justify-center md:justify-start">
               <Button
                 size="lg"
                 text="Подключить"
-                class="font-extrabold"
+                class="font-extrabold mb-20 md:mb-0"
                 @click="isModalVisible = true"
               />
             </div>
@@ -59,7 +59,7 @@ definePageMeta({
         <PageSection class="mt-20 flex-1 flex items-center">
           <div class="flex-1 flex">
             <NAlert type="info" title="Paytg" class="w-full">
-              <div id="how-it-works" class="text-base w-2/3">
+              <div id="how-it-works" class="text-base w-full md:w-2/3">
                 Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ
                 самостоятельно, без участия персонала. Он открывается по QR-коду, расположенному за
                 столиком, и работает как касса самообслуживания.
@@ -68,7 +68,7 @@ definePageMeta({
           </div>
         </PageSection>
 
-        <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
+        <PageSection class="mt-20 flex-1 flex flex-col items-center w-full md:w-1/2 mx-auto">
           <h1 class="text-3xl font-bold">Как это работает?</h1>
           <NTimeline vertical size="large" class="mt-5">
             <NTimelineItem
@@ -95,7 +95,7 @@ definePageMeta({
           </NTimeline>
         </PageSection>
 
-        <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
+        <PageSection class="mt-20 flex-1 flex flex-col items-center w-full md:w-1/2 mx-auto">
           <h1 class="text-3xl font-bold">
             Почему
             <NGradientText class="font-bold" type="info">Paytg</NGradientText>
