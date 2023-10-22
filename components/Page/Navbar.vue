@@ -71,6 +71,7 @@ const menus = computed((): IMenuItem[] => [
                   :to="item.route ? item.route : undefined"
                   :href="item.href ? item.href : undefined"
                   class="flex-1 hover:no-underline capitalize"
+                  @click="toggleOptions(false)"
                 >
                   {{ item.text }}
                 </Anchor>
