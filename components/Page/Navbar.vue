@@ -11,7 +11,8 @@ export interface IMenuItem {
 const app = useAppConfig() as AppConfigInput
 
 const menus = computed((): IMenuItem[] => [
-  // { type: 'link', text: 'Заказы', route: { name: 'index' } },
+  { type: 'link', text: 'Как это работает?', route: '#how-it-works' },
+  { type: 'link', text: 'Почему Paytg и в чем выгода?', route: '#why-paytg' },
 ])
 </script>
 

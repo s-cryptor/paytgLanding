@@ -50,7 +50,7 @@ definePageMeta({
       <PageSection class="mt-20 flex-1 flex items-center">
         <div class="flex-1 flex">
           <NAlert type="info" title="Paytg" class="w-full">
-            <div class="text-base w-2/3">
+            <div id="how-it-works" class="text-base w-2/3">
               Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ
               самостоятельно, без участия персонала. Он открывается по QR-коду, расположенному за
               столиком, и работает как касса самообслуживания.
@@ -78,6 +78,7 @@ definePageMeta({
             content="Как только заказ начнут готовить, гость получается уведомление"
           />
           <NTimelineItem
+            id="why-paytg"
             type="success"
             title="Гость получает увдомление о готовности"
             content="Гость может сам забрать заказ, либо получить его за свой столик"
@@ -227,6 +228,11 @@ html.dark {
       color: theme('colors.gray.100');
     }
   }
+}
+
+html,
+body {
+  scroll-behavior: smooth;
 }
 
 .triangle-shape {
