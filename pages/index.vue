@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-import { NAlert, NTimeline, NTimelineItem, NGradientText, NList, NListItem } from 'naive-ui'
+import { NAlert, NTimeline, NTimelineItem, NGradientText, NModal } from 'naive-ui'
+
+const isModalVisible = ref(false)
+
 // meta
 definePageMeta({
   layout: 'page',
@@ -7,131 +10,154 @@ definePageMeta({
 </script>
 
 <template>
-  <PageWrapper class="flex-1 flex">
-    <PageBody class="flex-1 flex flex-col">
-      <PageSection class="flex-1 flex items-center relative">
-        <div class="background-overlay">
-          <div
-            class="absolute top-0 left-0 transform translate-x-64 translate-y-4 h-14 w-14 rounded-full bg-gray-900 dark:bg-white"
-          ></div>
-          <div
-            class="absolute hidden md:block top-0 left-0 transform translate-x-18 translate-y-20 h-28 w-28 rounded-full bg-blue-600 linear-wipe"
-          ></div>
-          <div
-            class="absolute hidden md:block bottom-0 right-0 transform -translate-x-4 -translate-y-20 h-16 w-16 rounded bg-purple-600 linear-wipe"
-          ></div>
-          <div class="absolute bottom-0 right-0 triangle-shape"></div>
-        </div>
-        <div class="flex-1 md:w-1/2 flex flex-col z-10">
-          <h1 class="text-center md:text-left mt-4">
-            <span
-              style="
-                --content: 'paytg';
-                --start-color: #007cf0;
-                --end-color: #00dfd8;
-                --animation-name: anim-fg-1;
-              "
-              class="animated-text-bg drop-shadow-xl text-5xl xl:text-8xl 2xl:text-9xl block font-black uppercase"
-            >
-              <span class="animated-text-fg">paytg</span>
-            </span>
-          </h1>
-          <div class="text-5xl">БЫСТРАЯ ОПЛАТА В ТЕЛЕГРАМЕ</div>
-          <div class="text-5xl">ДЛЯ ВАШЕГО БИЗНЕСА</div>
-          <div class="flex space-x-4 ml-4 mt-10 justify-center md:justify-start">
-            <Button size="lg" text="Подключить" class="font-extrabold" to="/" />
+  <div>
+    <PageWrapper class="flex-1 flex">
+      <PageBody class="flex-1 flex flex-col">
+        <PageSection class="flex-1 flex items-center relative">
+          <div class="background-overlay">
+            <div
+              class="absolute top-0 left-0 transform translate-x-64 translate-y-4 h-14 w-14 rounded-full bg-gray-900 dark:bg-white"
+            ></div>
+            <div
+              class="absolute hidden md:block top-0 left-0 transform translate-x-18 translate-y-20 h-28 w-28 rounded-full bg-blue-600 linear-wipe"
+            ></div>
+            <div
+              class="absolute hidden md:block bottom-0 right-0 transform -translate-x-4 -translate-y-20 h-16 w-16 rounded bg-purple-600 linear-wipe"
+            ></div>
+            <div class="absolute bottom-0 right-0 triangle-shape"></div>
           </div>
-        </div>
-        <div class="flex justify-center">
-          <img src="~/assets/images/preview.png" alt="" width="350" />
-        </div>
-      </PageSection>
-
-      <PageSection class="mt-20 flex-1 flex items-center">
-        <div class="flex-1 flex">
-          <NAlert type="info" title="Paytg" class="w-full">
-            <div id="how-it-works" class="text-base w-2/3">
-              Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ
-              самостоятельно, без участия персонала. Он открывается по QR-коду, расположенному за
-              столиком, и работает как касса самообслуживания.
+          <div class="flex-1 md:w-1/2 flex flex-col z-10">
+            <h1 class="text-center md:text-left mt-4">
+              <span
+                style="
+                  --content: 'paytg';
+                  --start-color: #007cf0;
+                  --end-color: #00dfd8;
+                  --animation-name: anim-fg-1;
+                "
+                class="animated-text-bg drop-shadow-xl text-5xl xl:text-8xl 2xl:text-9xl block font-black uppercase"
+              >
+                <span class="animated-text-fg">paytg</span>
+              </span>
+            </h1>
+            <div class="text-5xl">БЫСТРАЯ ОПЛАТА В ТЕЛЕГРАМЕ</div>
+            <div class="text-5xl">ДЛЯ ВАШЕГО БИЗНЕСА</div>
+            <div class="flex space-x-4 ml-4 mt-10 justify-center md:justify-start">
+              <Button
+                size="lg"
+                text="Подключить"
+                class="font-extrabold"
+                @click="isModalVisible = true"
+              />
             </div>
-          </NAlert>
-        </div>
-      </PageSection>
+          </div>
+          <div class="flex justify-center">
+            <img src="~/assets/images/preview.png" alt="" width="350" />
+          </div>
+        </PageSection>
 
-      <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
-        <h1 class="text-3xl font-bold">Как это работает?</h1>
-        <NTimeline vertical size="large" class="mt-5">
-          <NTimelineItem
-            type="success"
-            title="Гость сканирует QR-код и попадает в телеграм-бота"
-            content="А при следующем визите бот уже будет у гостя в телеграме"
-          />
-          <NTimelineItem
-            type="success"
-            title="Гость выбирает понравившиеся позиции и оплачивает заказ"
-            content="Меню представленно в привычном виде с описанием и возможностью кастомизировать каждую позицию, выбрав необходимый объем и добавки"
-          />
-          <NTimelineItem
-            type="success"
-            title="Заказ попадает на кухню"
-            content="Как только заказ начнут готовить, гость получается уведомление"
-          />
-          <NTimelineItem
-            id="why-paytg"
-            type="success"
-            title="Гость получает увдомление о готовности"
-            content="Гость может сам забрать заказ, либо получить его за свой столик"
-          />
-        </NTimeline>
-      </PageSection>
+        <PageSection class="mt-20 flex-1 flex items-center">
+          <div class="flex-1 flex">
+            <NAlert type="info" title="Paytg" class="w-full">
+              <div id="how-it-works" class="text-base w-2/3">
+                Это удобный телеграм-бот, с помощью которого ваши гости могут сделать заказ
+                самостоятельно, без участия персонала. Он открывается по QR-коду, расположенному за
+                столиком, и работает как касса самообслуживания.
+              </div>
+            </NAlert>
+          </div>
+        </PageSection>
 
-      <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
-        <h1 class="text-3xl font-bold">
-          Почему
-          <NGradientText class="font-bold" type="info">Paytg</NGradientText>
-          и в чем выгода?
-        </h1>
-        <div class="flex-1 flex flex-col mt-5 text-base gap-4">
-          <div class="flex-1 flex items-center">
-            <IconIc:baseline-telegram width="64" height="64" class="flex-shrink-0 mr-3" />
-            <span>
-              Не нужно разрабатывать приложение для вашего бизнеса, а гостям не нужно скачивать
-              очередное приложение, ведь телеграм есть у каждого и стал самым популярным приложением
-              в РФ
-            </span>
-          </div>
-          <div class="flex-1 flex items-center">
-            <IconFa6Solid:money-bill-trend-up width="64" height="64" class="flex-shrink-0 mr-3" />
-            <span>
-              Внедрение приложения в ресторанный бизнес в среднем увеличивает доход на 25%
-            </span>
-          </div>
-          <div class="flex-1 flex items-center">
-            <IconMaterialSymbols:mail width="64" height="64" class="flex-shrink-0 mr-3" />
-            <span>Возможность делать рассылку о новых позициях или акциях</span>
-          </div>
-          <div class="flex-1 flex items-center">
-            <IconMdi:food width="64" height="64" class="flex-shrink-0 mr-3" />
-            <span>
-              Гости видят аппетитные фото ваших блюд, могут не торопясь изучить меню и прочитать
-              описание
-            </span>
-          </div>
-          <div class="flex-1 flex items-center">
-            <IconIon:time width="64" height="64" class="flex-shrink-0 mr-3" />
-            <span>Экономия времени персонала</span>
-          </div>
-          <div class="flex-1 flex items-center">
-            <IconIconParkSolid:good-two width="64" height="64" class="flex-shrink-0 mr-3" />
-            <span>Уменьшение очередей и ошибок в заказах</span>
-          </div>
-        </div>
-      </PageSection>
+        <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
+          <h1 class="text-3xl font-bold">Как это работает?</h1>
+          <NTimeline vertical size="large" class="mt-5">
+            <NTimelineItem
+              type="success"
+              title="Гость сканирует QR-код и попадает в телеграм-бота"
+              content="А при следующем визите бот уже будет у гостя в телеграме"
+            />
+            <NTimelineItem
+              type="success"
+              title="Гость выбирает понравившиеся позиции и оплачивает заказ"
+              content="Меню представленно в привычном виде с описанием и возможностью кастомизировать каждую позицию, выбрав необходимый объем и добавки"
+            />
+            <NTimelineItem
+              type="success"
+              title="Заказ попадает на кухню"
+              content="Как только заказ начнут готовить, гость получается уведомление"
+            />
+            <NTimelineItem
+              id="why-paytg"
+              type="success"
+              title="Гость получает увдомление о готовности"
+              content="Гость может сам забрать заказ, либо получить его за свой столик"
+            />
+          </NTimeline>
+        </PageSection>
 
-      <PageSection class="mt-20 flex-1 flex items-center"></PageSection>
-    </PageBody>
-  </PageWrapper>
+        <PageSection class="mt-20 flex-1 flex flex-col items-center w-1/2 mx-auto">
+          <h1 class="text-3xl font-bold">
+            Почему
+            <NGradientText class="font-bold" type="info">Paytg</NGradientText>
+            и в чем выгода?
+          </h1>
+          <div class="flex-1 flex flex-col mt-5 text-base gap-4">
+            <div class="flex-1 flex items-center">
+              <IconIc:baseline-telegram width="64" height="64" class="flex-shrink-0 mr-3" />
+              <span>
+                Не нужно разрабатывать приложение для вашего бизнеса, а гостям не нужно скачивать
+                очередное приложение, ведь телеграм есть у каждого и стал самым популярным
+                приложением в РФ
+              </span>
+            </div>
+            <div class="flex-1 flex items-center">
+              <IconFa6Solid:money-bill-trend-up width="64" height="64" class="flex-shrink-0 mr-3" />
+              <span>
+                Внедрение приложения в ресторанный бизнес в среднем увеличивает доход на 25%
+              </span>
+            </div>
+            <div class="flex-1 flex items-center">
+              <IconMaterialSymbols:mail width="64" height="64" class="flex-shrink-0 mr-3" />
+              <span>Возможность делать рассылку о новых позициях или акциях</span>
+            </div>
+            <div class="flex-1 flex items-center">
+              <IconMdi:food width="64" height="64" class="flex-shrink-0 mr-3" />
+              <span>
+                Гости видят аппетитные фото ваших блюд, могут не торопясь изучить меню и прочитать
+                описание
+              </span>
+            </div>
+            <div class="flex-1 flex items-center">
+              <IconIon:time width="64" height="64" class="flex-shrink-0 mr-3" />
+              <span>Экономия времени персонала</span>
+            </div>
+            <div class="flex-1 flex items-center">
+              <IconIconParkSolid:good-two width="64" height="64" class="flex-shrink-0 mr-3" />
+              <span>Уменьшение очередей и ошибок в заказах</span>
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection class="mt-20 flex-1 flex items-center"></PageSection>
+      </PageBody>
+    </PageWrapper>
+    <NModal
+      v-model:show="isModalVisible"
+      class="custom-card"
+      preset="card"
+      style="width: 600px"
+      title="Подключение"
+      :bordered="false"
+      size="huge"
+    >
+      <span class="text-base">
+        Для подключения свяжитесь с
+        <NGradientText class="font-bold" type="info">
+          <a href="https://t.me/s_cryptor" target="_blank" class="font-bold">@s_cryptor</a>
+        </NGradientText>
+      </span>
+    </NModal>
+  </div>
 </template>
 
 <style lang="scss">
